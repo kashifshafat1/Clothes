@@ -82,20 +82,24 @@ const PlaceOrder = () => {
           }
           break;
         }
-        case "stripe":
-          { const stripeResponse = await axios.post(backendUrl + '/api/order/stripe', orderData, {
-            headers: {
-              Authorization: 'Bearer ' + token
+        case "stripe": {
+          const stripeResponse = await axios.post(
+            backendUrl + "/api/order/stripe",
+            orderData,
+            {
+              headers: {
+                Authorization: "Bearer " + token,
+              },
             }
-          })
-          if(stripeResponse.data.success) {
-            const {session_url} = stripeResponse.data;
+          );
+          if (stripeResponse.data.success) {
+            const { session_url } = stripeResponse.data;
             window.location.replace(session_url);
+          } else {
+            toast.error(stripeResponse.data.message);
           }
-          else {
-            toast.error(stripeResponse.data.message)
-          }
-          break; }
+          break;
+        }
 
         default:
           orderData.paymentMethod = "COD";
@@ -213,7 +217,7 @@ const PlaceOrder = () => {
           <Title Text1={"PAYMENT"} Text2={"METHOD"} />
           {/* PAYMENT METHOD TYPE */}
           <div className="flex flex-col gap-3 lg:flex-row">
-            <div
+            {/* <div
               onClick={() => setMethod("stripe")}
               className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
             >
@@ -223,8 +227,8 @@ const PlaceOrder = () => {
                 }`}
               ></p>
               <img src={asset.stripe_logo} alt="" className="h-5 mx-4" />
-            </div>
-            <div
+            </div> */}
+            {/* <div
               onClick={() => setMethod("razorpay")}
               className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
             >
@@ -234,7 +238,7 @@ const PlaceOrder = () => {
                 }`}
               ></p>
               <img src={asset.razorpay_logo} alt="" className="h-5 mx-4" />
-            </div>
+            </div> */}
             <div
               onClick={() => setMethod("cod")}
               className="flex items-center gap-3 border p-2 px-3 cursor-pointer"

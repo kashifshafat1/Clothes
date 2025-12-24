@@ -21,6 +21,7 @@ const Products = () => {
       }
     });
   };
+  console.log(productData);
 
   useEffect(() => {
     fetchProductData();

@@ -14,7 +14,7 @@ const Add = ({ token }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("Men");
-  const [subCategory, setSubCategory] = useState("Topwear");
+  const [subCategory, setSubCategory] = useState("Winter");
   const [price, setPrice] = useState("");
   const [bestSeller, setBestSeller] = useState(false);
   const [sizes, setSizes] = useState([]);
@@ -163,6 +163,7 @@ const Add = ({ token }) => {
             value={category}
             className="w-full px-3 py-2"
           >
+            <option value="UnStiched-Suite">UnStiched-Suite</option>
             <option value="Men">Men</option>
             <option value="Women">Women</option>
             <option value="Kids">Kids</option>
@@ -175,9 +176,13 @@ const Add = ({ token }) => {
             value={subCategory}
             className="w-full px-3 py-2"
           >
-            <option value="Topwear">Topwear</option>
-            <option value="Bottomwear">Bottomwear</option>
-            <option value="Winterwear">Winterwear</option>
+            <option value="Winter">Winter</option>
+            <option value="Summer">Summer</option>
+            <option value="Wash&Wear">Wash & Wear</option>
+            <option value="Cotton">Cotton</option>
+            <option value="Itline-Wash&Wear">Itline-Wash&Wear</option>
+            <option value="Grece">Grece</option>
+            <option value="Al-Karam-Vol">Al-Karam-Vol</option>
           </select>
         </div>
 
@@ -197,7 +202,7 @@ const Add = ({ token }) => {
       <div>
         <p className="mb-2">Product Sizes</p>
         <div className="flex gap-3">
-          {["S", "M", "L", "XL", "XXL"].map((size) => (
+          {["Stiched", "Un-Stiched"].map((size) => (
             <div
               key={size}
               onClick={() =>
